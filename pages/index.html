@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>Hello Express!</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="./style.css" />
+    <title>Zap2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Hello Express!</h1>
-    <p>Showing <code>pages/index.html</code></p>
+    <div class="box-login">
+      <div class="collect-user">
+        <h3>Insira o nome do seu usuário:</h3>
+        <form id="form-enter" action="">
+          <input id="input-enter" autocomplete="off" />
+          <button>Entrar</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>,
+    <script>
+        let form = document.querySelector('#form-enter');
+        //Coletando dados du usuário
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          let name = document.querySelector('#input-enter').value;
+          if(name){
+            window.sessionStorage.setItem('userName', name);
+
+            window.location.href = '/chat';
+          }
+        });
+      
+    </script>
   </body>
 </html>

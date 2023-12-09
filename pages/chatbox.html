@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="chat">
+      <div class="box-rooms">
+        <ul id="lista de rooms">
+          <li class="room">Sala1</li>
+        </ul>
+      </div>
+      <div class="box-msg">
+        <ul id="messages"></ul>
+        <form id="form" action="">
+          <input id="input" autocomplete="off" /><button>Enviar</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+      //Coleto dado do SessionStorage
+      let sessionUser = window.sessionStorage.getItem('userName');
+
+      //inicio o socket somente para esssa rota
+      var socket = io('/chat', { userName: sessionUser });
+      
+      let form = document.getElementById('form');
+      let input = document.getElementById('input');
+      
+      //Enviando a mensagem para o servidor
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if(input.value){
+          socket.emit('chatMessage', {userName: sessionUser, userMsg: input.value});
+          input.value = '';
+        }
+      });
+
+
+      //Ouve a mensagem vinda do servidor e disponibiliza no quadro
+      function msgToBox() {
+        let myBox = document.getElementById('messages');
+        socket.on('retMsg', (data) => {
+          console.log(data);
+          myBox.innerHTML += `
+          <li class="box-msgrec">
+            <h4 class="msg-enviada">${data.userName} </h4>
+            <p class="msgTxt">${data.userMsg} </p>
+          </li>
+          `;
+          myBox = '';
+        });
+      }
+      msgToBox();
+    </script>
+  </body>
+</html>

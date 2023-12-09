@@ -1,16 +1,108 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  padding: 1rem;
-  font-family: system-ui, sans-serif;
-  color: black;
-  background-color: white;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-h1 {
-  font-weight: 800;
-  font-size: 1.5rem;
+
+.box-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    margin: auto;
+    background-color: #6d6d6d;
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+}
+.box-login h3{
+    color: #f1f1f1;
+}
+
+.chat{
+    display: flex;
+    min-height: 900px;
+}
+
+.box-rooms{
+    width: 25%;
+    min-height: 900px;
+    background-color: #6d6d6d;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.box-rooms ul{
+    list-style: none;
+}
+
+.box-msg{
+    width: 75%;
+    min-height: 900px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: rgb(85, 121, 85);
+}
+
+.box-msgrec {
+    width: auto;
+    height: auto;
+    padding: 2px;
+    border: 1px solid rgb(40, 133, 79);
+    border-radius: 10px;
+    color: #000000;
+    float: right;
+    margin: 0 5px;
+  }
+  
+
+#form {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+#input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin: 0.25rem;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#form>button {
+    background: #333;
+    border: none;
+    padding: 0 1rem;
+    margin: 0.25rem;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messages>li {
+    padding: 0.5rem 1rem;
+}
+
+#messages>li:nth-child(odd) {
+    background: #efefef;
 }
